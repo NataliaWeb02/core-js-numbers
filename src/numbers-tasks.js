@@ -498,10 +498,14 @@ getNumberValue(5);
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  return (
+    typeof value === 'number' &&
+    !Number.isNaN(number) &&
+    Number.isFinite(number)
+  );
 }
-
+isNumber('a');
 /**
  * Returns a boolean value indicating whether a number is an integer or not.
  *
