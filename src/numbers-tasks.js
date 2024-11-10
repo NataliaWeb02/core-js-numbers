@@ -366,9 +366,13 @@ console.log(numberToStringInBase(255, 16));
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  if (fractionDigits < 0 || !Number.isInteger(fractionDigits)) {
+    throw new Error('Fraction digits must be a non-negative integer.');
+  }
+  return number.toExponential(fractionDigits);
 }
+console.log(toExponential(12345, 2));
 
 /**
  * Returns a string representation of a number in fixed-point notation.
@@ -381,9 +385,13 @@ function toExponential(/* number, fractionDigits */) {
  * 12345, 2    => '12345.00'
  * 12.345, 1   => '12.3'
  */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toFixed(number, fractionDigits) {
+  if (fractionDigits < 0 || !Number.isInteger(fractionDigits)) {
+    throw new Error('Fraction digits must be a non-negative integer.');
+  }
+  return number.toFixed(fractionDigits);
 }
+console.log(toFixed(12345, 2));
 
 /**
  * Returns a string representation of a number in normal (fixed-point or exponential)
