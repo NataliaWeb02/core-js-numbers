@@ -14,8 +14,8 @@ function getRectangleArea(width, height) {
   }
   return width * height;
 }
-console.log(getRectangleArea(5, 10));
-console.log(getRectangleArea(5, 5));
+getRectangleArea(5, 10);
+getRectangleArea(5, 5);
 
 /**
  * Returns a circumference of circle given by radius.
@@ -34,9 +34,9 @@ function getCircleCircumference(radius) {
   }
   return 2 * Math.PI * radius;
 }
-console.log(getCircleCircumference(5));
-console.log(getCircleCircumference(3.14));
-console.log(getCircleCircumference(0));
+getCircleCircumference(5);
+getCircleCircumference(3.14);
+getCircleCircumference(0);
 
 /**
  * Returns an average of two given numbers.
@@ -72,9 +72,9 @@ function getAverage(/* value1, value2 */) {
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
   return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
-console.log(getDistanceBetweenPoints(0, 0, 0, 1));
-console.log(getDistanceBetweenPoints(0, 0, 1, 0));
-console.log(getDistanceBetweenPoints(-5, 0, 10, -10));
+getDistanceBetweenPoints(0, 0, 0, 1);
+getDistanceBetweenPoints(0, 0, 1, 0);
+getDistanceBetweenPoints(-5, 0, 10, -10);
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
@@ -93,9 +93,9 @@ function getLinearEquationRoot(a, b) {
   }
   return -b / a;
 }
-console.log(getLinearEquationRoot(5, -10));
-console.log(getLinearEquationRoot(1, 8));
-console.log(getLinearEquationRoot(5, 0));
+getLinearEquationRoot(5, -10);
+getLinearEquationRoot(1, 8);
+getLinearEquationRoot(5, 0);
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -125,7 +125,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
   const clampedCosTheta = Math.max(-1, Math.min(1, cosTheta));
   return Math.acos(clampedCosTheta);
 }
-console.log(getAngleBetweenVectors(0, 1, 0, -1));
+getAngleBetweenVectors(0, 1, 0, -1);
 
 /**
  * Returns a last digit of a integer number.
@@ -143,7 +143,7 @@ console.log(getAngleBetweenVectors(0, 1, 0, -1));
 function getLastDigit(value) {
   return value % 10;
 }
-console.log(getLastDigit(100));
+getLastDigit(100);
 
 /**
  * Returns a number by given string representation.
@@ -159,7 +159,7 @@ console.log(getLastDigit(100));
 function parseNumberFromString(value) {
   return Number(value);
 }
-console.log(parseNumberFromString('100'));
+parseNumberFromString('100');
 
 /**
  * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
@@ -177,7 +177,7 @@ console.log(parseNumberFromString('100'));
 function getParallelepipedDiagonal(a, b, c) {
   return Math.sqrt(a * a + b * b + c * c);
 }
-console.log(getParallelepipedDiagonal(1, 1, 1));
+getParallelepipedDiagonal(1, 1, 1);
 
 /**
  * Returns the number rounded to specified power of 10.
@@ -200,7 +200,7 @@ function roundToPowerOfTen(num, pow) {
   const factor = 10 ** pow;
   return Math.round(num / factor) * factor;
 }
-console.log(roundToPowerOfTen(1234, 0));
+roundToPowerOfTen(1234, 0);
 
 /**
  * Returns true is the number is prime; otherwise false.
@@ -256,7 +256,7 @@ function toNumber(/* value, def */) {
 function getCube(num) {
   return num ** 3;
 }
-console.log(getCube(3));
+getCube(3);
 
 /**
  * Returns the Fibonacci number located at the index position.
@@ -290,7 +290,7 @@ function getSumToN(n) {
   if (n < 1) return 0;
   return (n * (n + 1)) / 2;
 }
-console.log(getSumToN(5));
+getSumToN(5);
 
 /**
  * Returns the sum of the digits of a given number.
@@ -335,7 +335,7 @@ function isPowerOfTwo(/* num */) {
 function getSine(num) {
   return Math.sin(num);
 }
-console.log(getSine(0));
+getSine(0);
 
 /**
  * Returns a string representation of a number in a specified base (radix).
@@ -354,7 +354,7 @@ function numberToStringInBase(number, base) {
   }
   return number.toString(base);
 }
-console.log(numberToStringInBase(255, 16));
+numberToStringInBase(255, 16);
 
 /**
  * Returns a string representation of a number in exponential notation.
@@ -372,7 +372,7 @@ function toExponential(number, fractionDigits) {
   }
   return number.toExponential(fractionDigits);
 }
-console.log(toExponential(12345, 2));
+toExponential(12345, 2);
 
 /**
  * Returns a string representation of a number in fixed-point notation.
@@ -391,7 +391,7 @@ function toFixed(number, fractionDigits) {
   }
   return number.toFixed(fractionDigits);
 }
-console.log(toFixed(12345, 2));
+toFixed(12345, 2);
 
 /**
  * Returns a string representation of a number in normal (fixed-point or exponential)
@@ -411,7 +411,7 @@ function toPrecision(number, precision) {
   }
   return number.toPrecision(precision);
 }
-console.log(toPrecision(12345, 7));
+toPrecision(12345, 7);
 /**
  * Returns the primitive value of a Number object.
  *
@@ -428,7 +428,7 @@ function getNumberValue(number) {
   }
   return number;
 }
-console.log(getNumberValue(5));
+getNumberValue(5);
 
 /**
  * Returns a boolean value indicating whether the parameter is a number or not.
@@ -463,7 +463,7 @@ function isNumber(/* number */) {
 function isInteger(number) {
   return typeof number === 'number' && Number.isInteger(number);
 }
-console.log(isInteger(5));
+isInteger(5);
 
 /**
  * Returns a floating point number or, if the number cannot be parsed from the argument, returns NaN.
@@ -476,6 +476,7 @@ console.log(isInteger(5));
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(/* str */) {}
+
 /**
  * Returns an integer of the specified base or, if the number cannot be parsed
  * from the argument, returns NaN.
