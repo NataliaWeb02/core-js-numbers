@@ -286,9 +286,11 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  if (n < 1) return 0;
+  return (n * (n + 1)) / 2;
 }
+console.log(getSumToN(5));
 
 /**
  * Returns the sum of the digits of a given number.
@@ -330,9 +332,10 @@ function isPowerOfTwo(/* num */) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
+console.log(getSine(0));
 
 /**
  * Returns a string representation of a number in a specified base (radix).
@@ -345,9 +348,13 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  if (base < 2 || base > 36) {
+    throw new Error('Base must be between 2 and 36.');
+  }
+  return number.toString(base);
 }
+console.log(numberToStringInBase(255, 16));
 
 /**
  * Returns a string representation of a number in exponential notation.
