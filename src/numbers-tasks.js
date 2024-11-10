@@ -475,11 +475,7 @@ console.log(isInteger(5));
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(str) {
-  const parsedNumber = parseFloat(str);
-  return isNaN(parsedNumber) ? NaN : parsedNumber;
-}
-console.log(getFloatOnString('4.567abcdefgh'));
+function getFloatOnString(/* str */) {}
 /**
  * Returns an integer of the specified base or, if the number cannot be parsed
  * from the argument, returns NaN.
