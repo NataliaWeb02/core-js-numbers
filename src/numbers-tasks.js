@@ -1,14 +1,4 @@
-/* *******************************************************************************************
- *                                                                                           *
- * Please read the following tutorial before implementing tasks:                              *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates           *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number   *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math     *
- *                                                                                           *
- ******************************************************************************************* */
-
-/**
- * Returns an area of a rectangle given by width and height.
+/* * Returns an area of a rectangle given by width and height.
  *
  * @param {number} width
  * @param {number} height
@@ -18,9 +8,14 @@
  *   5, 10 => 50
  *   5, 5  => 25
  */
-function getRectangleArea(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleArea(width, height) {
+  if (typeof width !== 'number' || typeof height !== 'number') {
+    throw new Error('Both width and height must be numbers');
+  }
+  return width * height;
 }
+console.log(getRectangleArea(5, 10));
+console.log(getRectangleArea(5, 5));
 
 /**
  * Returns a circumference of circle given by radius.
@@ -33,9 +28,15 @@ function getRectangleArea(/* width, height */) {
  *   3.14 => 19.729201864543903
  *   0    => 0
  */
-function getCircleCircumference(/* radius */) {
-  throw new Error('Not implemented');
+function getCircleCircumference(radius) {
+  if (typeof radius !== 'number') {
+    throw new Error('The radius must be a number');
+  }
+  return 2 * Math.PI * radius;
 }
+console.log(getCircleCircumference(5));
+console.log(getCircleCircumference(3.14));
+console.log(getCircleCircumference(0));
 
 /**
  * Returns an average of two given numbers.
@@ -49,7 +50,7 @@ function getCircleCircumference(/* radius */) {
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
+function getAverage(value1, value2) {
   throw new Error('Not implemented');
 }
 
@@ -68,10 +69,12 @@ function getAverage(/* value1, value2 */) {
  *   (0,0) (1,0)    => 1
  *   (-5,0) (10,-10) => 18.027756377319946
  */
-function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getDistanceBetweenPoints(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
-
+console.log(getDistanceBetweenPoints(0, 0, 0, 1));
+console.log(getDistanceBetweenPoints(0, 0, 1, 0));
+console.log(getDistanceBetweenPoints(-5, 0, 10, -10));
 /**
  * Returns a root of linear equation a*x + b = 0 given by coefficients a and b.
  *
@@ -84,9 +87,15 @@ function getDistanceBetweenPoints(/* x1, y1, x2, y2 */) {
  *   x + 8 = 0       => -8
  *   5*x = 0         => 0
  */
-function getLinearEquationRoot(/* a, b */) {
-  throw new Error('Not implemented');
+function getLinearEquationRoot(a, b) {
+  if (a === 0) {
+    throw new Error('Coefficient a cannot be zero in a linear equation.');
+  }
+  return -b / a;
 }
+console.log(getLinearEquationRoot(5, -10));
+console.log(getLinearEquationRoot(1, 8));
+console.log(getLinearEquationRoot(5, 0));
 
 /**
  * Returns an angle (in radians) between two vectors given by xi and yi,
@@ -461,7 +470,7 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
+function isSafeInteger() {
   throw new Error('Not implemented');
 }
 
