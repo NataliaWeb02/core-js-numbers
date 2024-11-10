@@ -50,9 +50,17 @@ getCircleCircumference(0);
  *  10, 0  => 5
  *  -3, 3  => 0
  */
-function getAverage(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function getAverage(value1, value2) {
+  if (!Number.isFinite(value1) || !Number.isFinite(value2)) {
+    return NaN;
+  }
+  const sum = value1 + value2;
+  if (Math.abs(sum) === Infinity) {
+    return Infinity;
+  }
+  return sum / 2;
 }
+getAverage(5, 5);
 
 /**
  * Returns a distance between two points by cartesian coordinates.
@@ -219,9 +227,25 @@ roundToPowerOfTen(1234, 0);
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  if (n <= 1) {
+    return false;
+  }
+  if (n === 2) {
+    return true;
+  }
+  if (n % 2 === 0) {
+    return false;
+  }
+  const limit = Math.sqrt(n);
+  for (let i = 3; i <= limit; i += 2) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return true;
 }
+isPrime(17);
 
 /**
  * Tries to convert value to number and returns it if conversion was successful;
@@ -238,9 +262,11 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const num = Number(value);
+  return Number.isNaN(num) ? def : num;
 }
+toNumber(42, 0);
 
 /**
  * Returns the cube of the given number.
@@ -271,9 +297,21 @@ getCube(3);
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index < 0) {
+    throw new Error('Index cannot be negative');
+  }
+  if (index === 0) return 0;
+  if (index === 1) return 1;
+  const a = 0;
+  let b = 1;
+  for (let i = 2; i <= index; i += 1) {
+    const next = a + b;
+    b = next;
+  }
+  return b;
 }
+getFibonacciNumber(3);
 
 /**
  * Returns the sum of all numbers from 1 to n.
@@ -303,10 +341,14 @@ getSumToN(5);
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  return num
+    .toString()
+    .split('')
+    .map(Number)
+    .reduce((acc, digit) => acc + digit, 0);
 }
-
+getSumOfDigits(123);
 /**
  * Returns true if the given number is a power of two, false otherwise.
  *
@@ -318,9 +360,20 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  if (num <= 0) {
+    return false;
+  }
+  let current = num;
+  while (current > 1) {
+    if (current % 2 !== 0) {
+      return false;
+    }
+    current /= 2;
+  }
+  return true;
 }
+isPowerOfTwo(16);
 
 /**
  * Returns the sine of a number.
