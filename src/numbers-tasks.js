@@ -114,9 +114,18 @@ console.log(getLinearEquationRoot(5, 0));
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const dotProduct = x1 * x2 + y1 * y2;
+  const magnitudeA = Math.sqrt(x1 * x1 + y1 * y1);
+  const magnitudeB = Math.sqrt(x2 * x2 + y2 * y2);
+  if (magnitudeA === 0 || magnitudeB === 0) {
+    throw new Error('One of the vectors has zero length.');
+  }
+  const cosTheta = dotProduct / (magnitudeA * magnitudeB);
+  const clampedCosTheta = Math.max(-1, Math.min(1, cosTheta));
+  return Math.acos(clampedCosTheta);
 }
+console.log(getAngleBetweenVectors(0, 1, 0, -1));
 
 /**
  * Returns a last digit of a integer number.
@@ -131,9 +140,10 @@ function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  return value % 10;
 }
+console.log(getLastDigit(100));
 
 /**
  * Returns a number by given string representation.
