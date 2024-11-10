@@ -405,10 +405,13 @@ console.log(toFixed(12345, 2));
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  if (precision < 1 || !Number.isInteger(precision)) {
+    throw new Error('Precision must be a positive integer.');
+  }
+  return number.toPrecision(precision);
 }
-
+console.log(toPrecision(12345, 7));
 /**
  * Returns the primitive value of a Number object.
  *
@@ -419,9 +422,13 @@ function toPrecision(/* number, precision */) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  if (number instanceof Number) {
+    return number.valueOf();
+  }
+  return number;
 }
+console.log(getNumberValue(5));
 
 /**
  * Returns a boolean value indicating whether the parameter is a number or not.
@@ -453,9 +460,10 @@ function isNumber(/* number */) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  return typeof number === 'number' && Number.isInteger(number);
 }
+console.log(isInteger(5));
 
 /**
  * Returns a floating point number or, if the number cannot be parsed from the argument, returns NaN.
@@ -467,10 +475,11 @@ function isInteger(/* number */) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  const parsedNumber = parseFloat(str);
+  return isNaN(parsedNumber) ? NaN : parsedNumber;
 }
-
+console.log(getFloatOnString('4.567abcdefgh'));
 /**
  * Returns an integer of the specified base or, if the number cannot be parsed
  * from the argument, returns NaN.
