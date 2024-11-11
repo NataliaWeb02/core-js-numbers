@@ -532,8 +532,13 @@ isInteger(5);
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {}
-
+function getFloatOnString(str) {
+  const result = parseFloat(str);
+  return Number.isNaN(result) || result.toString() !== str.trim()
+    ? NaN
+    : result;
+}
+getFloatOnString('4.567abcdefgh');
 /**
  * Returns an integer of the specified base or, if the number cannot be parsed
  * from the argument, returns NaN.
@@ -548,10 +553,17 @@ function getFloatOnString(/* str */) {}
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const result = parseInt(str, base);
+  if (
+    Number.isNaN(result) ||
+    result.toString(base) !== str.trim().split('.')[0]
+  ) {
+    return NaN;
+  }
+  return result;
 }
-
+getIntegerOnString('4.567abcdefgh', 10);
 /**
  * Returns whether a number is a safe integer.
  *
@@ -563,10 +575,14 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger() {
-  throw new Error('Not implemented');
+function isSafeInteger(number) {
+  return (
+    Number.isInteger(number) &&
+    number >= Number.MIN_SAFE_INTEGER &&
+    number <= Number.MAX_SAFE_INTEGER
+  );
 }
-
+isSafeInteger(10);
 /**
  * Returns the smallest integer less than or equal to a given number.
  *
@@ -577,10 +593,10 @@ function isSafeInteger() {
  * 5.9  => 5
  * -5.1 => -6
  */
-function roundToSmallestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToSmallestInteger(number) {
+  return Math.floor(number);
 }
-
+roundToSmallestInteger(5.9);
 /**
  * Returns the largest integer greater than or equal to a given number.
  *
@@ -591,10 +607,10 @@ function roundToSmallestInteger(/* number */) {
  * 5.1  => 6
  * -5.9 => -5
  */
-function roundToLargestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToLargestInteger(number) {
+  return Math.ceil(number);
 }
-
+roundToLargestInteger(5.1);
 /**
  * Returns the value of a number rounded to the nearest integer.
  *
@@ -606,10 +622,10 @@ function roundToLargestInteger(/* number */) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function roundToNearestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToNearestInteger(number) {
+  return Math.round(number);
 }
-
+roundToNearestInteger(5.5);
 /**
  * Returns the integer part of a number by removing any fractional digits.
  *
@@ -621,10 +637,10 @@ function roundToNearestInteger(/* number */) {
  * 5.4  => 5
  * -5.5 => -5
  */
-function getIntegerPartNumber(/* number */) {
-  throw new Error('Not implemented');
+function getIntegerPartNumber(number) {
+  return Math.trunc(number);
 }
-
+getIntegerPartNumber(5.5);
 /**
  * Returns the sum of numbers.
  *
